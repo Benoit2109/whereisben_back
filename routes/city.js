@@ -3,12 +3,10 @@ const router = express.Router();
 const upload = require("../middlewares/Upload");
 const connection = require("../db");
 
-router.get("/", (req, res) => {
-  connection.query("SELECT * FROM city", [req.params.id], (err, results) => {
+router.get("/user/:id", (req, res) => {
+  connection.query("SELECT * FROM city WHERE city.user_id = ?", [req.params.id], (err, results) => {
     if (err) {
       res.status(500).json(err);
-    } else if (results.length === 0) {
-      res.status(404).send("city not found...");
     } else {
       res.status(200).json(results);
     }
@@ -18,9 +16,7 @@ router.get("/", (req, res) => {
 router.post("/newcity", upload, (req, res) => {
   const newcity = req.body;
   newcity.photo = req.file.filename;
-
-  console.log(req.file);
-  console.log(newcity);
+  
   connection.query("INSERT INTO city SET ?", [newcity], (err) => {
     if (err) {
       res.status(500).json(err);

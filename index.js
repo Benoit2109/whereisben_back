@@ -12,6 +12,7 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 );
+app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/cities", citiesRoute);
