@@ -18,6 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/cities", citiesRoute);
 app.use("/users", usersRoute);
 
+app.get("/", (req, res) => {
+  res.send("ok")
+})
+
 app.listen(process.env.PORT, (err) => {
   if (err) {
     throw new Error("Something bad happenned...");
