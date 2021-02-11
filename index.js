@@ -1,10 +1,12 @@
 const express = require("express");
+const helmet = require ("helmet");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const citiesRoute = require("./routes/city");
 const usersRoute = require("./routes/user");
 
+app.use(helemet());
 app.use(express.static("uploads"));
 app.use(express.json());
 app.use(
