@@ -6,7 +6,7 @@ const app = express();
 const citiesRoute = require("./routes/city");
 const usersRoute = require("./routes/user");
 
-app.use(helemet());
+app.use(helmet());
 app.use(express.static("uploads"));
 app.use(express.json());
 app.use(
