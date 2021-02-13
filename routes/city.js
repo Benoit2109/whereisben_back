@@ -49,8 +49,8 @@ router.post("/newcity", authenticateWithJsonWebToken, upload, (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
-  connection.query("DELETE FROM city WHERE id=?", authenticateWithJsonWebToken, [req.params.id], (err) => {
+router.delete("/:id", authenticateWithJsonWebToken, (req, res) => {
+  connection.query("DELETE FROM city WHERE id=?", [req.params.id], (err) => {
     if (err) {
       res.status(500).json(err);
     } else {
