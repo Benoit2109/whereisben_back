@@ -70,7 +70,6 @@ router.post("/login", (req, res) => {
             id: result[0].id,
             email,
             password: "hidden",
-            firstname,
           };
           const token = jwt.sign(
             {
